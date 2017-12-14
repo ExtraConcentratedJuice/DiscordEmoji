@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DiscordEmoji</string>
+    <string name="loading">Loading...</string>
+    <string name="about">An unofficial app for the DiscordEmoji website created by ExtraConcentratedJuice.\n\nWe are not affiliated with Discord or DiscordEmoji.
+        \n\nDiscordEmoji: http://discordemoji.com\n\n
+        All your downloaded emojis are stored at the directory Downloads/DiscordEmoji</string>
+    <string name="menuitem">menuitem</string>
+</resources>
