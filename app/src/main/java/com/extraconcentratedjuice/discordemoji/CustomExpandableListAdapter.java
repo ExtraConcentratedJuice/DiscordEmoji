@@ -11,7 +11,7 @@ package com.extraconcentratedjuice.discordemoji;
         import android.widget.ImageView;
         import android.widget.TextView;
 
-        import com.squareup.picasso.Picasso;
+        import com.bumptech.glide.Glide;
 
 public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
 
@@ -43,6 +43,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
             final String emojiTitle = getChild(listPosition, expandedListPosition).title;
             final String emojiAuthor = getChild(listPosition, expandedListPosition).author;
             final String emojiSlug = getChild(listPosition, expandedListPosition).slug;
+            final String emojiCategory = getChild(listPosition, expandedListPosition).CategoryName();
             if (convertView == null) {
                 LayoutInflater layoutInflater = (LayoutInflater) this.context
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -56,7 +57,8 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                     .findViewById(R.id.image);
             title.setText(":" + emojiTitle + ":");
             desc.setText("By: " + emojiAuthor);
-            Picasso.with(MainActivity.instance).load(HTTP.ASSET_URL + emojiSlug + ".png").into(img);
+            Glide.with(MainActivity.instance).load(HTTP.ASSET_URL + emojiSlug + (emojiCategory.equals("Animated") ? ".gif" : ".png")).into(img);
+
         return convertView;
     }
 

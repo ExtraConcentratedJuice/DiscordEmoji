@@ -12,7 +12,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.squareup.picasso.Picasso;
+
+import com.bumptech.glide.Glide;
 
 public class EmojiDetails extends AppCompatActivity {
 
@@ -20,6 +21,7 @@ public class EmojiDetails extends AppCompatActivity {
     public String title;
     public String description;
     public String slug;
+    public String category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +33,13 @@ public class EmojiDetails extends AppCompatActivity {
         author = intent.getStringExtra("author");
         description = intent.getStringExtra("description");
         slug = intent.getStringExtra("slug");
+        category = intent.getStringExtra("category");
         setTitle(title);
         TextView titletext = findViewById(R.id.name);
         TextView authortext = findViewById(R.id.author);
         TextView descriptiontext = findViewById(R.id.description);
         ImageView img = findViewById(R.id.emojiimage);
-        Picasso.with(this).load(HTTP.ASSET_URL + slug + ".png").into(img);
+        Glide.with(this).load(HTTP.ASSET_URL + slug + (category.equals("Animated") ? ".gif" : ".png")).into(img);
         titletext.setText(title);
         authortext.setText("By: " + author);
         descriptiontext.setText(description);

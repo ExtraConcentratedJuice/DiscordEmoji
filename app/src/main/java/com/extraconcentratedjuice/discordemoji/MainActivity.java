@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("author", emote.author);
                     intent.putExtra("description", emote.description);
                     intent.putExtra("slug", emote.slug);
-                    startActivity(intent);
+                    intent.putExtra("category", emote.CategoryName());
                     return true;
                 }
             });
