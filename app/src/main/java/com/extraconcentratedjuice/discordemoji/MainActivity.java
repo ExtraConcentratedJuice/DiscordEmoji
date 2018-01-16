@@ -165,11 +165,12 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                     Emoji emote = (Emoji) expandableListAdapter.getChild(groupPosition, childPosition);
                     Intent intent = new Intent(MainActivity.this, EmojiDetails.class);
+                    intent.putExtra("category", emote.CategoryName());
                     intent.putExtra("title", emote.title);
                     intent.putExtra("author", emote.author);
                     intent.putExtra("description", emote.description);
                     intent.putExtra("slug", emote.slug);
-                    intent.putExtra("category", emote.CategoryName());
+                    startActivity(intent);
                     return true;
                 }
             });
