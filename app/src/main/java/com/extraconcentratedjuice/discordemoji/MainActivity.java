@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private Toast toast;
 
     // fix for indexoutofbounds exception on list update
-    private List<String> temptitle;
-    private HashMap<String, List<Emoji>> tempdetail;
+    private List<String> tempTitle;
+    private HashMap<String, List<Emoji>> tempDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +67,8 @@ public class MainActivity extends AppCompatActivity {
     class Initialize extends AsyncTask<String, Void, JSONObject> {
         protected JSONObject doInBackground(String... urls) {
             JSONObject data;
-            tempdetail = new HashMap<>();
-            temptitle = new ArrayList<>();
+            tempDetail = new HashMap<>();
+            tempTitle = new ArrayList<>();
             try {
                 data = HTTP.getCategories();
             }
@@ -94,9 +94,9 @@ public class MainActivity extends AppCompatActivity {
                 String key = (String) i.next();
                 try {
                     String name = json.getString(key);
-                    temptitle.add(name);
+                    tempTitle.add(name);
                     Emoji.categories.put(Integer.parseInt(key), name);
-                    tempdetail.put(json.getString(key), new ArrayList<Emoji>());
+                    tempDetail.put(json.getString(key), new ArrayList<Emoji>());
 
                 } catch (org.json.JSONException e) {
                     System.out.println(e.toString());
@@ -124,11 +124,11 @@ public class MainActivity extends AppCompatActivity {
                     String title = o.getString("title");
                     String description = o.getString("description");
                     String slug = o.getString("slug");
-                    int emojicategory = o.getInt("category");
+                    int emojiCategory = o.getInt("category");
                     String author = o.getString("submitted_by");
 
-                    Emoji emoji = new Emoji(id, title, slug, description, emojicategory, author);
-                    tempdetail.get(emoji.CategoryName()).add(emoji);
+                    Emoji emoji = new Emoji(id, title, slug, description, emojiCategory, author);
+                    tempDetail.get(emoji.CategoryName()).add(emoji);
 
                 } catch (org.json.JSONException ex) {
                     System.out.println(ex.toString());
@@ -140,8 +140,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(JSONArray json) {
             if (expandableListAdapter == null)
             {
-                expandableListTitle = new ArrayList<>(temptitle);
-                details = new HashMap<>(tempdetail);
+                expandableListTitle = new ArrayList<>(tempTitle);
+                details = new HashMap<>(tempDetail);
                 expandableListAdapter = new CustomExpandableListAdapter(MainActivity.this, expandableListTitle, details);
                 view.setAdapter(expandableListAdapter);
             }
@@ -149,8 +149,8 @@ public class MainActivity extends AppCompatActivity {
             {
                 expandableListTitle.clear();
                 details.clear();
-                expandableListTitle = new ArrayList<>(temptitle);
-                details = new HashMap<>(tempdetail);
+                expandableListTitle = new ArrayList<>(tempTitle);
+                details = new HashMap<>(tempDetail);
                 // notifyDataSetChanged generates a blank listview for some reason, creating new listadapter instead
                 expandableListAdapter = new CustomExpandableListAdapter(MainActivity.this, expandableListTitle, details);
                 view.setAdapter(expandableListAdapter);

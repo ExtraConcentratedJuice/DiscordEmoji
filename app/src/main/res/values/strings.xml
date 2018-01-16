@@ -5,4 +5,5 @@
         \n\nDiscordEmoji: http://discordemoji.com\n\n
         All your downloaded emojis are stored at the directory Downloads/DiscordEmoji</string>
     <string name="menuitem">menuitem</string>
+    <string name="search">Search</string>
 </resources>

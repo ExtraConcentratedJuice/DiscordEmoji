@@ -24,5 +24,4 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.extraconcentratedjuice.discordemoji.MainActivity"/>
     </application>
-
 </manifest>

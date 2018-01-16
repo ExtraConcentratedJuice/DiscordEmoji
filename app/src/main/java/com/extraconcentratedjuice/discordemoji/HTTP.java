@@ -9,10 +9,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLEncoder;
 
 public class HTTP {
     public static final String BASE_URL =  "http://discordemoji.com/api";
     public static final String ASSET_URL = "http://discordemoji.com/assets/emoji/";
+
     public static String getPage(String url) throws java.io.IOException {
         URL httpurl = new URL(url);
         HttpURLConnection urlConnection = (HttpURLConnection) httpurl.openConnection();
@@ -45,9 +47,23 @@ public class HTTP {
             return null;
         }
     }
+
     public static JSONArray getAllEmoji() throws java.io.IOException
     {
         String data = getPage(BASE_URL);
+        try
+        {
+            return new JSONArray(data);
+        }
+        catch (org.json.JSONException e)
+        {
+            System.out.println(e.toString());
+            return null;
+        }
+    }
+
+    public static JSONArray searchEmoji(String query) throws java.io.IOException {
+        String data = getPage(BASE_URL + "?request=search&q=" + URLEncoder.encode(query, "UTF8"));
         try
         {
             return new JSONArray(data);
