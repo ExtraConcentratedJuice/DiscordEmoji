@@ -61,7 +61,7 @@ public class EmojiDetails extends AppCompatActivity {
                 finish();
                 return true;
             case R.id.download:
-                String url = HTTP.ASSET_URL + slug + ".png";
+                String url = HTTP.ASSET_URL + slug + (category.equals("Animated") ? ".gif" : ".png");
                 DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
                 request.setDescription(description);
                 request.setTitle(title);
