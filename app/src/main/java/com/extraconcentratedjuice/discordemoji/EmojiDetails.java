@@ -67,7 +67,7 @@ public class EmojiDetails extends AppCompatActivity {
                 request.setTitle(title);
                 request.allowScanningByMediaScanner();
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS + "/DiscordEmoji", title + ".png");
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS + "/DiscordEmoji", title + (category.equals("Animated") ? ".gif" : ".png"));
                 DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                 manager.enqueue(request);
                 return true;
