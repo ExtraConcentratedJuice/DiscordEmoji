@@ -128,6 +128,10 @@ public class MainActivity extends AppCompatActivity {
                     String author = o.getString("submitted_by");
 
                     Emoji emoji = new Emoji(id, title, slug, description, emojiCategory, author);
+                    // ignoring errors xddd
+                    if (emoji.CategoryName() == null)
+                        continue;
+
                     tempDetail.get(emoji.CategoryName()).add(emoji);
 
                 } catch (org.json.JSONException ex) {
