@@ -11,9 +11,10 @@ public class Emoji {
     public String description;
     public String slug;
     public int category;
+    public int favorites;
     public String author;
 
-    public Emoji(int id, String title, String slug, String description, int category, String author)
+    public Emoji(int id, String title, String slug, String description, int category, String author, int favorites)
     {
         this.id = id;
         this.title = title;
@@ -21,6 +22,7 @@ public class Emoji {
         this.description = description;
         this.category = category;
         this.author = author;
+        this.favorites = favorites;
     }
 
     public String CategoryName()

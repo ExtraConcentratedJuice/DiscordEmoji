@@ -124,10 +124,11 @@ public class MainActivity extends AppCompatActivity {
                     String title = o.getString("title");
                     String description = o.getString("description");
                     String slug = o.getString("slug");
+                    int favorites = o.getInt("faves");
                     int emojiCategory = o.getInt("category");
                     String author = o.getString("submitted_by");
 
-                    Emoji emoji = new Emoji(id, title, slug, description, emojiCategory, author);
+                    Emoji emoji = new Emoji(id, title, slug, description, emojiCategory, author, favorites);
                     // ignoring errors xddd
                     if (emoji.CategoryName() == null)
                         continue;

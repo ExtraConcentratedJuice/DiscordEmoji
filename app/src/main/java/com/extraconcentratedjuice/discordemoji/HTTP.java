@@ -12,8 +12,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class HTTP {
-    public static final String BASE_URL =  "http://discordemoji.com/api";
-    public static final String ASSET_URL = "http://discordemoji.com/assets/emoji/";
+    public static final String BASE_URL =  "https://discordemoji.com/api";
+    public static final String ASSET_URL = "https://discordemoji.com/assets/emoji/";
 
     public static String getPage(String url) throws java.io.IOException {
         URL httpurl = new URL(url);
